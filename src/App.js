@@ -1,9 +1,14 @@
-import './App.css';
+import './App.css'
+import Header from "./components/Header";
 
 function App() {
+
+  const data = "description manual"
+
   return (
     <div>
-      <h1>Hello World</h1>
+      <Header data={data}/>
+      <p>This is the {data}</p>
     </div>
   );
 }
