@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import './App.css'
-import Counter from './components/Counter';
+import Employee from './components/Employee';
 
 function App() {
 
@@ -11,16 +11,31 @@ function App() {
     console.log("COUNT::",count);
   }
 
-  let obj = {
-    title:"1st counter",
-    count
-  }
+  let emp = [
+    {
+      name:"Arjun",
+      age:21
+    },
+    {
+      name:"Nikhil",
+      age:22
+    },
+    {
+      name:"John",
+      age:23
+    }
+  ]
 
   return (
     <div className="App">
       <button onClick={addCount}>ADD</button>
-      <Counter {...obj} />
-      <Counter title='2nd Counter' count={count}/>
+      {
+        emp.map((obj)=>{
+          return (
+            <Employee name={obj.name} age={obj.age}/>
+          )
+        })
+      }
     </div>
   );
 }
