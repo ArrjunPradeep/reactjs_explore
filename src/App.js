@@ -30,11 +30,11 @@ function App() {
     <div className="App">
       <button onClick={addCount}>ADD</button>
       {
-        emp.map((obj)=>{
-          return (
-            <Employee name={obj.name} age={obj.age}/>
+        emp.map((obj, index)=>
+          (
+            <Employee key={index} {...obj}/>
           )
-        })
+      )
       }
     </div>
   );
