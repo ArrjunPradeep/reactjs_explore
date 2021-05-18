@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <h1 onClick={()=>setState(!state)}>Show/Hide</h1>
       {
-        state ? <Counter/> : null
+        state && <Counter/>
       }
     </div>
   );
