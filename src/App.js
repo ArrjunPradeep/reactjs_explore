@@ -1,40 +1,16 @@
 import {useState} from 'react'
 import './App.css'
-import Employee from './components/Employee';
+import Counter from './components/Counter';
 
 function App() {
 
-  const [count, setCount] = useState(0);
-
-  const addCount = async() => {
-    setCount(count+1);
-    console.log("COUNT::",count);
-  }
-
-  let emp = [
-    {
-      name:"Arjun",
-      age:21
-    },
-    {
-      name:"Nikhil",
-      age:22
-    },
-    {
-      name:"John",
-      age:23
-    }
-  ]
+  const [state,setState] = useState(false)
 
   return (
     <div className="App">
-      <button onClick={addCount}>ADD</button>
+      <h1 onClick={()=>setState(!state)}>Show/Hide</h1>
       {
-        emp.map((obj, index)=>
-          (
-            <Employee key={index} {...obj}/>
-          )
-      )
+        state ? <Counter/> : null
       }
     </div>
   );
