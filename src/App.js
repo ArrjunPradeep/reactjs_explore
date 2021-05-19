@@ -22,7 +22,7 @@ function App() {
           placeholder="🖊️ Add item..."
         />
         <i
-          onClick={() => setTodos([...toDos, {text:toDo,status:false}])}
+          onClick={() => setTodos([...toDos, {id:Date.now(), text:toDo,status:false}])}
           className="fas fa-plus"
         ></i>
       </div>
@@ -35,7 +35,18 @@ function App() {
             return (
               <div className="todo">
               <div className="left">
-                <input type="checkbox" name="" id="" />
+                <input onChange={(e)=>{
+                  console.log("VALUE",e.target.checked);
+                  console.log("OBJ VALUE",obj)
+
+                  setTodos(toDos.filter(obj2=>{
+                    if(obj2.id === obj.id){
+                      obj2.status = e.target.checked
+                    }
+                    return obj2;
+                  }))
+
+                }} value={obj.status} type="checkbox" name="" id="" />
                 <p>{obj.text}</p>
               </div>
               <div className="right">
@@ -46,6 +57,16 @@ function App() {
             
           })
         }
+
+        {
+          toDos.map((obj) => {
+            if(obj.status){
+              return (<h1>{obj.text}</h1>)
+            }
+            return null;
+          })
+        }
+
       </div>
     </div>
   );
